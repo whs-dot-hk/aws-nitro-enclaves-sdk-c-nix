@@ -1,137 +1,18 @@
 {
   "nodes": {
-    "aws-c-auth": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1660586491,
-        "narHash": "sha256-oLX/evqtKbs5/WpSUBdLdKWKD8tdWwP0iRONuMCVu/E=",
-        "owner": "awslabs",
-        "repo": "aws-c-auth",
-        "rev": "831fa583b83574db29cbae139b42e0d7a1d1ebb8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "awslabs",
-        "ref": "v0.6.15",
-        "repo": "aws-c-auth",
-        "type": "github"
-      }
-    },
-    "aws-c-cal": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1660166705,
-        "narHash": "sha256-sT5ahf8MuIhqDV6RrRU+RgsLdwVUDEFWRZJpzQJOPGA=",
-        "owner": "awslabs",
-        "repo": "aws-c-cal",
-        "rev": "1458c70a26877345ca28e333a092096afd410774",
-        "type": "github"
-      },
-      "original": {
-        "owner": "awslabs",
-        "ref": "v0.5.18",
-        "repo": "aws-c-cal",
-        "type": "github"
-      }
-    },
-    "aws-c-common": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1660266841,
-        "narHash": "sha256-zxV+Rf0bUrWao5ALnqgAWMVsuGfLKQbQXvw/ppDMd28=",
-        "owner": "awslabs",
-        "repo": "aws-c-common",
-        "rev": "be35e65a6c67ae2ffd126516c9783ac1dd2e8910",
-        "type": "github"
-      },
-      "original": {
-        "owner": "awslabs",
-        "ref": "v0.8.0",
-        "repo": "aws-c-common",
-        "type": "github"
-      }
-    },
-    "aws-c-compression": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1626712361,
-        "narHash": "sha256-bRNHjKhIpaWYToAFFUXUhyqYDmbL7SuZs2np/iH8Qzs=",
-        "owner": "awslabs",
-        "repo": "aws-c-compression",
-        "rev": "5fab8bc5ab5321d86f6d153b06062419080820ec",
-        "type": "github"
-      },
-      "original": {
-        "owner": "awslabs",
-        "ref": "v0.2.14",
-        "repo": "aws-c-compression",
-        "type": "github"
-      }
-    },
-    "aws-c-http": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1679437833,
-        "narHash": "sha256-pJGzGbIuz8UJkfmTQEZgXSOMuYixMezNZmgaRlcnmfg=",
-        "owner": "awslabs",
-        "repo": "aws-c-http",
-        "rev": "0600662610aa871a11aebe6ed67a11997317cbef",
-        "type": "github"
-      },
-      "original": {
-        "owner": "awslabs",
-        "ref": "v0.7.6",
-        "repo": "aws-c-http",
-        "type": "github"
-      }
-    },
-    "aws-c-io": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1651077704,
-        "narHash": "sha256-LIrAA3+Yd0lhCMQ9R4HT/ZFKm3y9iSm3h5vcn0ghiPA=",
-        "owner": "awslabs",
-        "repo": "aws-c-io",
-        "rev": "8f4508f5ec7d2949d5545e2b1ddcd1beb47a76a8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "awslabs",
-        "ref": "v0.11.0",
-        "repo": "aws-c-io",
-        "type": "github"
-      }
-    },
-    "aws-c-sdkutils": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1644268341,
-        "narHash": "sha256-G+ykP39EmI8BCeulTsZ/OSFKRzXVbEK0+mtJ3tugl5M=",
-        "owner": "awslabs",
-        "repo": "aws-c-sdkutils",
-        "rev": "e3c23f4aca31d9e66df25827645f72cbcbfb657a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "awslabs",
-        "ref": "v0.1.2",
-        "repo": "aws-c-sdkutils",
-        "type": "github"
-      }
-    },
     "aws-lc": {
       "flake": false,
       "locked": {
-        "lastModified": 1688759077,
-        "narHash": "sha256-AqA0fIbBFk6SD533oTSXy9Kc7Fja8vgiiPTF00+V2MY=",
-        "owner": "awslabs",
+        "lastModified": 1721060344,
+        "narHash": "sha256-DhnIz/VuI9OsDBLYdWzsa2zR/UFaocDQXRqEbgHwxr4=",
+        "owner": "aws",
         "repo": "aws-lc",
-        "rev": "cb7712dfa896d32d55992e2cb13d5fa54fb77002",
+        "rev": "47333e18117875148fc737c38c2d5586b45c7dfc",
         "type": "github"
       },
       "original": {
-        "owner": "awslabs",
-        "ref": "v1.12.0",
+        "owner": "aws",
+        "ref": "v1.32.0",
         "repo": "aws-lc",
         "type": "github"
       }
@@ -153,52 +34,96 @@
         "type": "github"
       }
     },
-    "json-c": {
+    "aws-nitro-enclaves-sdk-c": {
       "flake": false,
       "locked": {
-        "lastModified": 1649898763,
-        "narHash": "sha256-KbnUWLgpg6/1wvXhUoYswyqDcgiwEcvgaWCPjNcX20o=",
-        "owner": "json-c",
-        "repo": "json-c",
-        "rev": "2f2ddc1f2dbca56c874e8f9c31b5b963202d80e7",
+        "lastModified": 1691417128,
+        "narHash": "sha256-x5RElLc/S0Zwg5mZc4/J4c/OPdHvw8uAsbqZrzIzBrA=",
+        "owner": "aws",
+        "repo": "aws-nitro-enclaves-sdk-c",
+        "rev": "550f7313bf792bf03200c7c6e1ac3fd7d2dc382f",
         "type": "github"
       },
       "original": {
-        "owner": "json-c",
-        "ref": "json-c-0.16-20220414",
-        "repo": "json-c",
+        "owner": "aws",
+        "ref": "v0.4.1",
+        "repo": "aws-nitro-enclaves-sdk-c",
+        "type": "github"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1721116560,
+        "narHash": "sha256-++TYlGMAJM1Q+0nMVaWBSEvEUjRs7ZGiNQOpqbQApCU=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "9355fa86e6f27422963132c2c9aeedb0fb963d93",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
-        "aws-c-auth": "aws-c-auth",
-        "aws-c-cal": "aws-c-cal",
-        "aws-c-common": "aws-c-common",
-        "aws-c-compression": "aws-c-compression",
-        "aws-c-http": "aws-c-http",
-        "aws-c-io": "aws-c-io",
-        "aws-c-sdkutils": "aws-c-sdkutils",
         "aws-lc": "aws-lc",
         "aws-nitro-enclaves-nsm-api": "aws-nitro-enclaves-nsm-api",
-        "json-c": "json-c",
+        "aws-nitro-enclaves-sdk-c": "aws-nitro-enclaves-sdk-c",
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs",
         "s2n-tls": "s2n-tls"
       }
     },
     "s2n-tls": {
       "flake": false,
       "locked": {
-        "lastModified": 1687479774,
-        "narHash": "sha256-X+ZwM53ensCeUoxNa8cBO4KcWxWbb7iKxIRysImvKxw=",
+        "lastModified": 1719281421,
+        "narHash": "sha256-Go6p+6VidsoN7IMfBp7BMGnIcttaEA0q3CRAKDO5b+c=",
         "owner": "aws",
         "repo": "s2n-tls",
-        "rev": "e954ee5dc878c5c343d35574e7d07246a1e59314",
+        "rev": "073c7b415a17d271a7b2c8c385d0e641fc94871f",
         "type": "github"
       },
       "original": {
         "owner": "aws",
-        "ref": "v1.3.46",
+        "ref": "v1.4.17",
         "repo": "s2n-tls",
+        "type": "github"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     }

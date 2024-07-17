@@ -1,27 +1,74 @@
 {
-  inputs.aws-lc.url = "github:awslabs/aws-lc/v1.12.0";
-  inputs.s2n-tls.url = "github:aws/s2n-tls/v1.3.46";
-  inputs.aws-c-common.url = "github:awslabs/aws-c-common/v0.8.0";
-  inputs.aws-c-sdkutils.url = "github:awslabs/aws-c-sdkutils/v0.1.2";
-  inputs.aws-c-io.url = "github:awslabs/aws-c-io/v0.11.0";
-  inputs.aws-c-compression.url = "github:awslabs/aws-c-compression/v0.2.14";
-  inputs.aws-c-http.url = "github:awslabs/aws-c-http/v0.7.6";
-  inputs.aws-c-cal.url = "github:awslabs/aws-c-cal/v0.5.18";
-  inputs.aws-c-auth.url = "github:awslabs/aws-c-auth/v0.6.15";
+  inputs.flake-utils.url = "github:numtide/flake-utils";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
+  inputs.aws-lc.url = "github:aws/aws-lc/v1.32.0";
   inputs.aws-nitro-enclaves-nsm-api.url = "github:aws/aws-nitro-enclaves-nsm-api/v0.4.0";
-  inputs.json-c.url = "github:json-c/json-c/json-c-0.16-20220414";
+  inputs.aws-nitro-enclaves-sdk-c.url = "github:aws/aws-nitro-enclaves-sdk-c/v0.4.1";
+  inputs.s2n-tls.url = "github:aws/s2n-tls/v1.4.17";
 
   inputs.aws-lc.flake = false;
-  inputs.s2n-tls.flake = false;
-  inputs.aws-c-common.flake = false;
-  inputs.aws-c-sdkutils.flake = false;
-  inputs.aws-c-io.flake = false;
-  inputs.aws-c-compression.flake = false;
-  inputs.aws-c-http.flake = false;
-  inputs.aws-c-cal.flake = false;
-  inputs.aws-c-auth.flake = false;
   inputs.aws-nitro-enclaves-nsm-api.flake = false;
-  inputs.json-c.flake = false;
+  inputs.aws-nitro-enclaves-sdk-c.flake = false;
+  inputs.s2n-tls.flake = false;
 
-  outputs = _: {};
+  outputs = {
+    flake-utils,
+    self,
+    nixpkgs,
+    ...
+  } @ inputs:
+    flake-utils.lib.eachDefaultSystem (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+        with pkgs; {
+          packages = rec {
+            aws-lc = stdenv.mkDerivation {
+              HOME = "$TMPDIR";
+              NIX_CFLAGS_COMPILE = "-Wno-error";
+              cmakeFlags = ["-GNinja"];
+              name = "aws-lc";
+              nativeBuildInputs = [cmake ninja go];
+              src = inputs.aws-lc + /.;
+            };
+            s2n-tls = stdenv.mkDerivation {
+              propagatedBuildInputs = [aws-lc];
+              cmakeFlags = ["-GNinja"];
+              name = "s2n-tls";
+              nativeBuildInputs = [cmake ninja];
+              src = inputs.s2n-tls + /.;
+            };
+            aws-nitro-enclaves-nsm-api = rustPlatform.buildRustPackage {
+              cargoBuildFlags = "-p nsm-lib";
+              cargoHash = "sha256-Ulka2h8NMNsOpymBvrMuMSE+9e+rf86F/d1+dmNM9/I=";
+              cargoPatches = [./cargo-lock.patch];
+              pname = "aws-nitro-enclaves-nsm-api";
+              src = inputs.aws-nitro-enclaves-nsm-api + /.;
+              version = "1.0.0";
+              postInstall = ''
+                install -Dm644 target/*/release/nsm.h -t $out/include
+              '';
+            };
+            aws-nitro-enclaves-sdk-c = stdenv.mkDerivation {
+              cmakeFlags = ["-GNinja"];
+              name = "aws-nitro-enclaves-sdk-c";
+              nativeBuildInputs = [cmake ninja];
+              src = inputs.aws-nitro-enclaves-sdk-c + /.;
+              buildInputs = [
+                aws-c-auth
+                aws-c-cal
+                aws-c-common
+                aws-c-compression
+                aws-c-http
+                aws-c-io
+                aws-c-sdkutils
+                aws-nitro-enclaves-nsm-api
+                json_c
+                s2n-tls
+              ];
+            };
+          };
+        }
+    );
 }
