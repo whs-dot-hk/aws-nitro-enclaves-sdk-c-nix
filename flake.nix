@@ -51,7 +51,7 @@
               '';
             };
             aws-nitro-enclaves-sdk-c = stdenv.mkDerivation {
-              cmakeFlags = ["-GNinja"];
+              cmakeFlags = ["-GNinja" "-DBUILD_SHARED_LIBS=1"];
               name = "aws-nitro-enclaves-sdk-c";
               nativeBuildInputs = [cmake ninja];
               src = inputs.aws-nitro-enclaves-sdk-c + /.;
