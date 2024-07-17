@@ -55,7 +55,7 @@
               name = "aws-nitro-enclaves-sdk-c";
               nativeBuildInputs = [cmake ninja];
               src = inputs.aws-nitro-enclaves-sdk-c + /.;
-              buildInputs = [
+              propagatedBuildInputs = [
                 aws-c-auth
                 aws-c-cal
                 aws-c-common
