@@ -27,14 +27,14 @@
             aws-lc = stdenv.mkDerivation {
               HOME = "$TMPDIR";
               NIX_CFLAGS_COMPILE = "-Wno-error";
-              cmakeFlags = ["-GNinja"];
+              cmakeFlags = ["-GNinja" "-DBUILD_SHARED_LIBS=1"];
               name = "aws-lc";
               nativeBuildInputs = [cmake ninja go];
               src = inputs.aws-lc + /.;
             };
             s2n-tls = stdenv.mkDerivation {
               propagatedBuildInputs = [aws-lc];
-              cmakeFlags = ["-GNinja"];
+              cmakeFlags = ["-GNinja" "-DBUILD_SHARED_LIBS=1"];
               name = "s2n-tls";
               nativeBuildInputs = [cmake ninja];
               src = inputs.s2n-tls + /.;
