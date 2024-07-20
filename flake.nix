@@ -113,7 +113,6 @@
               pname = "aws-nitro-enclaves-nsm-api";
               src = inputs.aws-nitro-enclaves-nsm-api + /.;
               version = "1.0.0";
-              nativeBuildInputs = [rustPlatform.bindgenHook];
               postInstall = ''
                 install -Dm644 target/*/release/nsm.h -t $out/include
               '';
