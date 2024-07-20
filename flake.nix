@@ -64,6 +64,10 @@
               aws-c-io = p.aws-c-io.overrideAttrs {
                 src = inputs.aws-c-io + /.;
                 version = "dummy";
+                cmakeFlags = [
+                  "-DBUILD_SHARED_LIBS=ON"
+                  "-DUSE_VSOCK=1"
+                ];
               };
               aws-c-http = p.aws-c-http.overrideAttrs {
                 src = inputs.aws-c-http + /.;
