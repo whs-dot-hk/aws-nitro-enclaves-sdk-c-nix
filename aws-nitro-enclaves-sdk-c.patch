@@ -1,28 +1,10 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index e912d5d..60fc851 100644
+index e912d5d..044ca1a 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -77,7 +77,7 @@ aws_use_package(aws-c-io)
- aws_use_package(aws-c-http)
- aws_use_package(aws-c-auth)
- 
--add_subdirectory(bin/kmstool-instance)
-+#add_subdirectory(bin/kmstool-instance)
- 
- if (NOT WIN32)
-     add_library(${PROJECT_NAME} ${LIBTYPE} ${AWS_NITRO_ENCLAVES_HEADERS} ${AWS_NITRO_ENCLAVES_SRC})
-@@ -130,17 +130,17 @@ if (NOT WIN32)
-         endif()
+@@ -135,12 +135,12 @@ if (NOT WIN32)
+         add_subdirectory(bin/kmstool-enclave-cli)
      endif()
-         
--    if (NOT CMAKE_CROSSCOMPILING)
--        add_subdirectory(bin/kmstool-enclave)
--        add_subdirectory(bin/kmstool-enclave-cli)
--    endif()
-+    #if (NOT CMAKE_CROSSCOMPILING)
-+    #    add_subdirectory(bin/kmstool-enclave)
-+    #    add_subdirectory(bin/kmstool-enclave-cli)
-+    #endif()
      
 -    find_package(Doxygen OPTIONAL_COMPONENTS dot mscgen dia)
 -

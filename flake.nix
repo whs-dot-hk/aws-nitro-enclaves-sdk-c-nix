@@ -6,7 +6,7 @@
   inputs.aws-c-cal.url = "github:awslabs/aws-c-cal/v0.5.18";
   inputs.aws-c-common.url = "github:awslabs/aws-c-common/v0.8.0";
   inputs.aws-c-compression.url = "github:awslabs/aws-c-compression/v0.2.14";
-  inputs.aws-c-http.url = "github:awslabs/aws-c-http/v0.7.6";
+  inputs.aws-c-http.url = "github:awslabs/aws-c-http/v0.6.19";
   inputs.aws-c-io.url = "github:awslabs/aws-c-io/v0.11.0";
   inputs.aws-c-sdkutils.url = "github:awslabs/aws-c-sdkutils/v0.1.2";
   inputs.aws-lc.url = "github:aws/aws-lc/v1.12.0";
@@ -117,8 +117,8 @@
               cmakeFlags = ["-GNinja" "-DBUILD_SHARED_LIBS=1"];
               name = "aws-nitro-enclaves-sdk-c";
               nativeBuildInputs = [cmake ninja];
-              src = inputs.aws-nitro-enclaves-sdk-c + /.;
               patches = [./aws-nitro-enclaves-sdk-c.patch];
+              src = inputs.aws-nitro-enclaves-sdk-c + /.;
               propagatedBuildInputs = [
                 aws-c-auth
                 aws-c-cal
@@ -131,7 +131,6 @@
                 json_c
                 s2n-tls
               ];
-doCheck=false;
             };
             default = aws-nitro-enclaves-sdk-c;
           };
