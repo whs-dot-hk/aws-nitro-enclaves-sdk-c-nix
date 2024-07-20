@@ -20,25 +20,39 @@
   } @ inputs:
     flake-utils.lib.eachDefaultSystem (
       system: let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            (f: p: {
+              inherit s2n-tls;
+              aws-c-cal = p.aws-c-cal.override {
+                openssl = aws-lc;
+              };
+            })
+          ];
+        };
+        aws-lc = with pkgs;
+          stdenv.mkDerivation {
+            HOME = "$TMPDIR";
+            NIX_CFLAGS_COMPILE = "-Wno-error";
+            cmakeFlags = ["-GNinja" "-DBUILD_SHARED_LIBS=1"];
+            name = "aws-lc";
+            nativeBuildInputs = [cmake ninja go];
+            src = inputs.aws-lc + /.;
+          };
+        s2n-tls = with pkgs;
+          stdenv.mkDerivation {
+            propagatedBuildInputs = [aws-lc];
+            cmakeFlags = ["-GNinja" "-DBUILD_SHARED_LIBS=1"];
+            name = "s2n-tls";
+            nativeBuildInputs = [cmake ninja];
+            src = inputs.s2n-tls + /.;
+          };
       in
         with pkgs; {
           packages = rec {
-            aws-lc = stdenv.mkDerivation {
-              HOME = "$TMPDIR";
-              NIX_CFLAGS_COMPILE = "-Wno-error";
-              cmakeFlags = ["-GNinja" "-DBUILD_SHARED_LIBS=1"];
-              name = "aws-lc";
-              nativeBuildInputs = [cmake ninja go];
-              src = inputs.aws-lc + /.;
-            };
-            s2n-tls = stdenv.mkDerivation {
-              propagatedBuildInputs = [aws-lc];
-              cmakeFlags = ["-GNinja" "-DBUILD_SHARED_LIBS=1"];
-              name = "s2n-tls";
-              nativeBuildInputs = [cmake ninja];
-              src = inputs.s2n-tls + /.;
-            };
+            inherit aws-lc;
+            inherit s2n-tls;
             aws-nitro-enclaves-nsm-api = rustPlatform.buildRustPackage {
               cargoBuildFlags = "-p nsm-lib";
               cargoHash = "sha256-Ulka2h8NMNsOpymBvrMuMSE+9e+rf86F/d1+dmNM9/I=";
@@ -68,6 +82,7 @@
                 s2n-tls
               ];
             };
+            default = aws-nitro-enclaves-sdk-c;
           };
         }
     );
