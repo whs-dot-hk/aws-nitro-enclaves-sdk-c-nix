@@ -2,10 +2,10 @@
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
-  inputs.aws-lc.url = "github:aws/aws-lc/v1.32.0";
+  inputs.aws-lc.url = "github:aws/aws-lc/v1.12.0";
   inputs.aws-nitro-enclaves-nsm-api.url = "github:aws/aws-nitro-enclaves-nsm-api/v0.4.0";
   inputs.aws-nitro-enclaves-sdk-c.url = "github:aws/aws-nitro-enclaves-sdk-c/v0.4.1";
-  inputs.s2n-tls.url = "github:aws/s2n-tls/v1.4.17";
+  inputs.s2n-tls.url = "github:aws/s2n-tls/v1.3.46";
 
   inputs.aws-lc.flake = false;
   inputs.aws-nitro-enclaves-nsm-api.flake = false;

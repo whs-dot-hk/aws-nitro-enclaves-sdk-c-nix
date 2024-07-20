@@ -3,16 +3,16 @@
     "aws-lc": {
       "flake": false,
       "locked": {
-        "lastModified": 1721060344,
-        "narHash": "sha256-DhnIz/VuI9OsDBLYdWzsa2zR/UFaocDQXRqEbgHwxr4=",
+        "lastModified": 1688759077,
+        "narHash": "sha256-AqA0fIbBFk6SD533oTSXy9Kc7Fja8vgiiPTF00+V2MY=",
         "owner": "aws",
         "repo": "aws-lc",
-        "rev": "47333e18117875148fc737c38c2d5586b45c7dfc",
+        "rev": "cb7712dfa896d32d55992e2cb13d5fa54fb77002",
         "type": "github"
       },
       "original": {
         "owner": "aws",
-        "ref": "v1.32.0",
+        "ref": "v1.12.0",
         "repo": "aws-lc",
         "type": "github"
       }
@@ -98,16 +98,16 @@
     "s2n-tls": {
       "flake": false,
       "locked": {
-        "lastModified": 1719281421,
-        "narHash": "sha256-Go6p+6VidsoN7IMfBp7BMGnIcttaEA0q3CRAKDO5b+c=",
+        "lastModified": 1687479774,
+        "narHash": "sha256-X+ZwM53ensCeUoxNa8cBO4KcWxWbb7iKxIRysImvKxw=",
         "owner": "aws",
         "repo": "s2n-tls",
-        "rev": "073c7b415a17d271a7b2c8c385d0e641fc94871f",
+        "rev": "e954ee5dc878c5c343d35574e7d07246a1e59314",
         "type": "github"
       },
       "original": {
         "owner": "aws",
-        "ref": "v1.4.17",
+        "ref": "v1.3.46",
         "repo": "s2n-tls",
         "type": "github"
       }
